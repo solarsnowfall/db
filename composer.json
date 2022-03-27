@@ -1,0 +1,28 @@
+{
+    "name": "solarsnowfall/db",
+    "description": "Simple database abstraction layer with MySql implementation.",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "factory",
+        "singleton"
+    ],
+    "autoload": {
+        "psr-4": {
+            "Solarsnowfall\\DB\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Travis Miller",
+            "email": "travis@twooutrally.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.4",
+        "ext-json": "*",
+        "ext-mysqli": "*",
+        "ext-ctype": "*",
+        "solarsnowfall/reflection-factory": "^1.0"
+    }
+}
