@@ -6,6 +6,8 @@ use Solarsnowfall\Reflection\SingletonFactory;
 
 class DBConnection extends SingletonFactory
 {
+    const CLASS_NAME = '\\Solarsnowfall\\DB\\MySQLConnection';
+
     const DEFAULT_PARAMS = [
         'host'      => 'localhost',
         'user'      => 'workout_db_ext',
@@ -14,22 +16,27 @@ class DBConnection extends SingletonFactory
     ];
 
     /**
+     * @var MySQLConnection[]
+     */
+    protected static array $objects = [];
+
+    /**
      * @param array $params
-     * @return MySQLConnection
+     * @return MySQLConnection|null
      * @throws \Exception
      */
-    public static function get(array $params = self::DEFAULT_PARAMS): MySQLConnection
+    public static function get(array $params = self::DEFAULT_PARAMS): ?MySQLConnection
     {
-        return self::get($params);
+        return parent::get($params);
     }
 
     /**
      * @param array $params
-     * @return MySQLConnection
+     * @return MySQLConnection|null
      * @throws \Exception
      */
-    public static function newInstance(array $params = self::DEFAULT_PARAMS): MySQLConnection
+    public static function newInstance(array $params = self::DEFAULT_PARAMS): ?MySQLConnection
     {
-        return self::newInstance($params);
+        return parent::newInstance($params);
     }
 }
