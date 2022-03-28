@@ -4,8 +4,10 @@
     "type": "library",
     "license": "MIT",
     "keywords": [
-        "factory",
-        "singleton"
+        "database",
+        "db",
+        "mysql",
+        "dbal"
     ],
     "autoload": {
         "psr-4": {
