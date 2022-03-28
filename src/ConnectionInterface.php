@@ -39,6 +39,14 @@ interface ConnectionInterface
     public function errorMessage(): string;
 
     /**
+     * @param string $query
+     * @param array $params
+     * @param string|null $types
+     * @return StatementInterface
+     */
+    public function execute(string $query, array $params = [], ?string $types = null): StatementInterface;
+
+    /**
      * @return mixed
      */
     public function getConnection();

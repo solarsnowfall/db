@@ -89,13 +89,26 @@ class MySQLConnection implements ConnectionInterface
      * @param string $query
      * @param array $params
      * @param string|null $types
-     * @return array
+     * @return MySQLStatement
      */
-    public function fetchAllAssoc(string $query, array $params = [], ?string $types = null): array
+    public function execute(string $query, array $params = [], ?string $types = null): MySQLStatement
     {
         $statement = $this->prepare($query);
 
         $statement->execute($params, $types);
+
+        return $statement;
+    }
+
+    /**
+     * @param string $query
+     * @param array $params
+     * @param string|null $types
+     * @return array
+     */
+    public function fetchAllAssoc(string $query, array $params = [], ?string $types = null): array
+    {
+        $statement = $this->execute($query, $params, $types);
 
         return $statement->fetchAllAssoc();
     }
@@ -108,9 +121,7 @@ class MySQLConnection implements ConnectionInterface
      */
     public function fetchAssoc(string $query, array $params = [], ?string $types = null): array
     {
-        $statement = $this->prepare($query);
-
-        $statement->execute($params, $types);
+        $statement = $this->execute($query, $params, $types);
 
         return $statement->fetchAssoc();
     }
