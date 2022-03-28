@@ -99,16 +99,23 @@ class MySQLStatement implements StatementInterface
      */
     public function fetchAllAssoc(): array
     {
-        $rows = [];
+        $row = $rows = [];
 
-        while ($row = $this->fetchAssoc())
+        $this->bindResultArray($result);
+
+        while ($this->fetch())
+        {
+            foreach ($result as $key => $val)
+                $row[$key] = $val;
+
             $rows[] = $row;
+        }
 
         return $rows;
     }
 
     /**
-     * @return array
+     * @return array|null
      */
     public function fetchAssoc(): array
     {
@@ -116,7 +123,8 @@ class MySQLStatement implements StatementInterface
 
         $this->bindResultArray($result);
 
-        $this->fetch();
+        if (!$this->fetch())
+            return $row;
 
         foreach ($result as $key => $val)
             $row[$key] = $val;
