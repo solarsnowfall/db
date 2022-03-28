@@ -7,7 +7,8 @@
         "database",
         "db",
         "mysql",
-        "dbal"
+        "dbal",
+        "database abstraction layer"
     ],
     "autoload": {
         "psr-4": {
