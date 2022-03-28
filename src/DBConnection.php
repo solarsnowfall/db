@@ -15,6 +15,7 @@ class DBConnection extends SingletonFactory
         'database'  => 'workout_db'
     ];
 
+
     /**
      * @var MySQLConnection[]
      */
@@ -37,6 +38,13 @@ class DBConnection extends SingletonFactory
      */
     public static function newInstance(array $params = self::DEFAULT_PARAMS): ?MySQLConnection
     {
-        return parent::newInstance($params);
+        $params = static::DEFAULT_PARAMS;
+
+        return new MySQLConnection(
+            $params['host'],
+            $params['user'],
+            $params['password'],
+            $params['database']
+        );
     }
 }
