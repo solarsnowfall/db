@@ -87,6 +87,19 @@ class MySQLStatement implements StatementInterface
     }
 
     /**
+     * @param array $params
+     * @param string|null $types
+     * @return bool
+     */
+    public function execute(array $params = [], ?string $types = null): bool
+    {
+        if (!empty($params))
+            $this->bindParams($params, $types);
+
+        return $this->statement->execute();
+    }
+
+    /**
      * @return bool|null
      */
     public function fetch(): ?bool
@@ -130,19 +143,6 @@ class MySQLStatement implements StatementInterface
             $row[$key] = $val;
 
         return $row;
-    }
-
-    /**
-     * @param array $params
-     * @param string|null $types
-     * @return bool
-     */
-    public function execute(array $params = [], ?string $types = null): bool
-    {
-        if (!empty($params))
-            $this->bindParams($params, $types);
-
-        return $this->statement->execute();
     }
 
     /**
