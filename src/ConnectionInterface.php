@@ -65,6 +65,11 @@ interface ConnectionInterface
     public function fetchAssoc(string $query, array $params = [], ?string $types = null): array;
 
     /**
+     * @return string
+     */
+    public function getDatabase(): string;
+
+    /**
      * @return bool
      */
     public function ping(): bool;

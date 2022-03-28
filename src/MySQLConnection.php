@@ -10,6 +10,11 @@ class MySQLConnection implements ConnectionInterface
     protected \mysqli $connection;
 
     /**
+     * @var string
+     */
+    protected string $database;
+
+    /**
      * @param string $host
      * @param string $user
      * @param string $password
@@ -24,6 +29,8 @@ class MySQLConnection implements ConnectionInterface
         $socket = $socket ?? ini_get('mysqli.default_socket');
 
         $this->connection = new \mysqli($host, $user, $password, $database, $port, $socket);
+
+        $this->database = $database;
     }
 
     /**
@@ -114,6 +121,14 @@ class MySQLConnection implements ConnectionInterface
     public function getConnection(): \mysqli
     {
         return $this->connection;
+    }
+
+    /**
+     * @return string
+     */
+    public function getDatabase(): string
+    {
+        return $this->database;
     }
 
     /**

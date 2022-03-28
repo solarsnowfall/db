@@ -15,7 +15,6 @@ class DBConnection extends SingletonFactory
         'database'  => 'workout_db'
     ];
 
-
     /**
      * @var MySQLConnection[]
      */
