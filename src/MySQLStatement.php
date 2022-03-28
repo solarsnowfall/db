@@ -101,7 +101,7 @@ class MySQLStatement implements StatementInterface
     {
         $rows = [];
 
-        while ($row = $this->fetchAllAssoc())
+        while ($row = $this->fetchAssoc())
             $rows[] = $row;
 
         return $rows;
