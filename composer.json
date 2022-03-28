@@ -1,6 +1,6 @@
 {
     "name": "solarsnowfall/db",
-    "description": "Simple database abstraction layer with MySql implementation.",
+    "description": "Simple database abstraction layer with MySQL implementation.",
     "type": "library",
     "license": "MIT",
     "keywords": [
