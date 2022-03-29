@@ -23,6 +23,11 @@ interface StatementInterface
     public function bindResult(&...$var): bool;
 
     /**
+     * @return bool
+     */
+    public function close(): bool;
+
+    /**
      * @return int
      */
     public function errorCode(): int;

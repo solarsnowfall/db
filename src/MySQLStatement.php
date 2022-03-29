@@ -42,7 +42,7 @@ class MySQLStatement implements StatementInterface
         foreach (array_keys($params) as $key)
             $args[] = &$params[$key];
 
-        return call_user_func_array(array(&$this->statement, 'bind_param'), $args);
+        return call_user_func_array(array($this->statement, 'bind_param'), $args);
     }
 
     /**
@@ -51,7 +51,7 @@ class MySQLStatement implements StatementInterface
      */
     public function bindResult(&...$var): bool
     {
-        return call_user_func_array(array(&$this->statement, 'bind_result'), $var);
+        return call_user_func_array(array($this->statement, 'bind_result'), $var);
     }
 
     /**
@@ -68,6 +68,14 @@ class MySQLStatement implements StatementInterface
             $params[] = &$result[$field->name];
 
         return call_user_func_array(array($this, 'bindResult'), $params);
+    }
+
+    /**
+     * @return bool
+     */
+    public function close(): bool
+    {
+        return $this->statement->close();
     }
 
     /**
