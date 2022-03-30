@@ -19,7 +19,7 @@ abstract class DBConnection extends SingletonFactory
      */
     public static function defaultInstanceParams()
     {
-        return include '../../../config/db.php';
+        return include '../../../config/db.conf.php';
     }
 
     /**
@@ -45,10 +45,10 @@ abstract class DBConnection extends SingletonFactory
             case 'mysql':
 
                 return new MySQLConnection(
-                    $params['host'],
-                    $params['user'],
-                    $params['password'],
-                    $params['database']
+                    $params['mysql']['host'],
+                    $params['mysql']['user'],
+                    $params['mysql']['password'],
+                    $params['mysql']['database']
                 );
         }
     }
