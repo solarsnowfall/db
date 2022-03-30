@@ -18,7 +18,7 @@ abstract class DBConnection extends SingletonFactory
      */
     public static function defaultInstanceParams()
     {
-        return Solarsnowfall\Config\DB::getCredentials();
+        return \Solarsnowfall\Config\DB::getCredentials();
     }
 
     /**
