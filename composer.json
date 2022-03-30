@@ -26,6 +26,6 @@
         "ext-json": "*",
         "ext-mysqli": "*",
         "ext-ctype": "*",
-        "solarsnowfall/reflection-factory": "^1.0"
+        "solarsnowfall/reflection-factory": "dev-master"
     }
 }
