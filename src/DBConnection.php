@@ -39,11 +39,17 @@ abstract class DBConnection extends SingletonFactory
      */
     public static function newInstance(array $params): ?ConnectionInterface
     {
-        return new MySQLConnection(
-            $params['host'],
-            $params['user'],
-            $params['password'],
-            $params['database']
-        );
+        switch ($params['engine'])
+        {
+            default:
+            case 'mysql':
+
+                return new MySQLConnection(
+                    $params['host'],
+                    $params['user'],
+                    $params['password'],
+                    $params['database']
+                );
+        }
     }
 }
