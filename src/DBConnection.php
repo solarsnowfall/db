@@ -18,6 +18,9 @@ abstract class DBConnection extends SingletonFactory
      */
     public static function defaultInstanceParams()
     {
+        if (!class_exists('\\Solarsnowfall\\Config\\DB'))
+            throw new \Exception('Unable to find database config. Did you forget to define your config class?');
+
         return \Solarsnowfall\Config\DB::getCredentials();
     }
 
