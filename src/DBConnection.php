@@ -2,7 +2,6 @@
 
 namespace Solarsnowfall\DB;
 
-use http\Encoding\Stream\Deflate;
 use Solarsnowfall\Reflection\SingletonFactory;
 
 abstract class DBConnection extends SingletonFactory
@@ -29,7 +28,10 @@ abstract class DBConnection extends SingletonFactory
      */
     public static function get(array $params = null): ?ConnectionInterface
     {
-        return parent::get($params);
+        if ($params === null)
+            $params = static::defaultInstanceParams();
+
+        return static::newInstance($params);
     }
 
     /**
