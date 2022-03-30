@@ -18,7 +18,7 @@ abstract class DBConnection extends SingletonFactory
      */
     public static function defaultInstanceParams()
     {
-        return include '../../../config/db.conf.php';
+        return Solarsnowfall\Config\DB::getCredentials();
     }
 
     /**
